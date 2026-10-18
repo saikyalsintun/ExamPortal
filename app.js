@@ -2,7 +2,7 @@ const examRoutes = {
   "khaing thinzar aung": "Khaing/index.html",
   "su kabyar": "Su/index.html",
   "nyein min thu": "Nyein/index.html",
-  "Htun Mya":"Htun Mya/index.html"
+  "htun mya":"Htun Mya/index.html"
 };
 
 const form = document.getElementById("examForm");
