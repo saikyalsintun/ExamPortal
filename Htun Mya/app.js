@@ -25,8 +25,9 @@ function makeExam(){
  const readSentences=[];
  bank.readings.forEach(r=>r.sentences.forEach((s,i)=>readSentences.push({title:r.title,instruction:r.instruction,myanmar:s.myanmar,target:s.target})));
  const readingQs=shuffle(readSentences).slice(0,25).map(r=>{
-  const extras=shuffle(vocabPool.map(v=>v.pinyin).filter(w=>!r.target.includes(w))).slice(0,4);
-  return {id:0,section:"reading",type:"tiles",kind:"Part 3 · Translate Myanmar into Chinese",title:r.title,prompt:"အောက်ပါ မြန်မာဝါကျကို တရုတ်ဘာသာ Pinyin ဖြင့် အဓိပ္ပာယ်မပျက် မှန်ကန်သော အစီအစဉ်အတိုင်း စီပါ။",passage:`ဖတ်စာခေါင်းစဉ်: ${r.title}\n\nမြန်မာဝါကျ: ${r.myanmar}\n\nအဓိပ္ပာယ်ကို ဖတ်ပြီး သင့်တော်သော Pinyin အပိုင်းများကို စီပါ။`,tiles:makeTiles(r.target,extras),answer:r.target,marks:1};
+  // Part 3: show ONLY the useful Pinyin chunks for this sentence.
+  // No distractors such as unrelated pronouns, places, or verbs.
+  return {id:0,section:"reading",type:"tiles",kind:"Part 3 · Translate Myanmar into Chinese",title:r.title,prompt:"အောက်ပါ မြန်မာဝါကျကို တရုတ်ဘာသာ Pinyin ဖြင့် အဓိပ္ပာယ်မပျက် မှန်ကန်သော အစီအစဉ်အတိုင်း စီပါ။",passage:`ဖတ်စာခေါင်းစဉ်: ${r.title}\n\nမြန်မာဝါကျ: ${r.myanmar}\n\nဝါကျတည်ဆောက်ရန် လိုအပ်သော Pinyin စကားလုံးများကိုသာ မှန်ကန်သော အစီအစဉ်အတိုင်း စီပါ။`,tiles:makeTiles(r.target),answer:r.target,marks:1};
  });
  const blankQs=makeBlankQuestions();
  const parts=[vocabQs,transQs,readingQs,blankQs];
