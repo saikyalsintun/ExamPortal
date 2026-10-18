@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chinese Exam Portal</title>
   <link rel="stylesheet" href="style.css">
+  <script src="app.js?v=3" defer></script>
 </head>
 <body>
   <main class="page">
@@ -16,19 +17,24 @@
 
       <form id="examForm" autocomplete="off">
         <label for="studentName">Student name</label>
-        <input id="studentName" name="studentName" type="text"
-               placeholder="Enter your full name" required>
+        <input
+          id="studentName"
+          name="studentName"
+          type="text"
+          placeholder="Enter your full name"
+          autocomplete="name"
+          required
+        >
         <button type="submit">Continue to Exam <span aria-hidden="true">→</span></button>
         <p id="message" class="message" role="status" aria-live="polite"></p>
       </form>
 
       <div class="help-note">
         <span class="lock-icon" aria-hidden="true">✦</span>
-        Use the name provided by your teacher. Names are not case-sensitive.
+        <span>Use the name provided by your teacher. Names are not case-sensitive.</span>
       </div>
     </section>
     <footer>Chinese Exam Portal</footer>
   </main>
-  <script src="app.js"></script>
 </body>
 </html>

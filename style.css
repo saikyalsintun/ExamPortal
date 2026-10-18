@@ -130,10 +130,15 @@ button:focus-visible {
   margin: 12px 0 0;
   font-size: 13px;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .message.error {
   color: #b42318;
+}
+
+.message.success {
+  color: #18794e;
 }
 
 .help-note {
