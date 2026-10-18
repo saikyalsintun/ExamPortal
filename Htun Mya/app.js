@@ -23,10 +23,10 @@ function makeExam(){
   return {id:0,section:"translation",type:"tiles",kind:"Sentence translation",prompt:t.my,tiles:makeTiles(target,distractors),answer:target,marks:1};
  });
  const readSentences=[];
- bank.readings.forEach(r=>r.sentences.forEach((s,i)=>readSentences.push({title:r.title,instruction:r.instruction,target:s.target})));
+ bank.readings.forEach(r=>r.sentences.forEach((s,i)=>readSentences.push({title:r.title,instruction:r.instruction,myanmar:s.myanmar,target:s.target})));
  const readingQs=shuffle(readSentences).slice(0,25).map(r=>{
   const extras=shuffle(vocabPool.map(v=>v.pinyin).filter(w=>!r.target.includes(w))).slice(0,4);
-  return {id:0,section:"reading",type:"tiles",kind:"Reading · arrange the sentence",title:r.title,prompt:"ဖတ်စာအကြောင်းအရာနှင့် ကိုက်ညီသော Pinyin ဝါကျကို မှန်ကန်စွာ ပြန်စီပါ။",passage:`ဖတ်စာခေါင်းစဉ်: ${r.title}\n${r.instruction}`,tiles:makeTiles(r.target,extras),answer:r.target,marks:1};
+  return {id:0,section:"reading",type:"tiles",kind:"Part 3 · Translate Myanmar into Chinese",title:r.title,prompt:"အောက်ပါ မြန်မာဝါကျကို တရုတ်ဘာသာ Pinyin ဖြင့် အဓိပ္ပာယ်မပျက် မှန်ကန်သော အစီအစဉ်အတိုင်း စီပါ။",passage:`ဖတ်စာခေါင်းစဉ်: ${r.title}\n\nမြန်မာဝါကျ: ${r.myanmar}\n\nအဓိပ္ပာယ်ကို ဖတ်ပြီး သင့်တော်သော Pinyin အပိုင်းများကို စီပါ။`,tiles:makeTiles(r.target,extras),answer:r.target,marks:1};
  });
  const blankQs=makeBlankQuestions();
  const parts=[vocabQs,transQs,readingQs,blankQs];
