@@ -6,7 +6,7 @@
  */
 const examRoutes = {
   "khaing thinzar aung": "Khaing/index.html",
-  "su kabyar": "Su/index.html",
+  "qing": "Su/index.html",
   "nyein min thu": "Nyein/index.html",
   "htun mya": "Htun%20Mya/index.html"
 };
